@@ -36,18 +36,16 @@ const StyledButton = styled(Button)`
   margin-top: 20px;
 `;
 
-const FormUserDetails = ({ values, handleChange, nextStep }) => {
+const FormPersonalDetails = ({ values, handleChange, nextStep, prevStep }) => {
   const continueStep = (e) => {
     e.preventDefault();
     nextStep();
   };
 
-  const prevStep = (e) => {
-    
+  const back = (e) => {
+    e.preventDefault();
     prevStep();
   };
-
-  
 
   return (
     <ThemeProvider theme={theme}>
@@ -76,10 +74,10 @@ const FormUserDetails = ({ values, handleChange, nextStep }) => {
               defaultValue={values.bio}
               fullWidth
             />
-             <StyledButton color="secondary" variant="contained" onClick={prevStep}>
+            <StyledButton variant="contained" color="secondary" onClick={back}>
               Back
             </StyledButton>
-            <StyledButton color="primary" variant="contained" onClick={continueStep}>
+            <StyledButton variant="contained" color="primary" onClick={continueStep}>
               Continue
             </StyledButton>
           </CardContent>
@@ -89,4 +87,4 @@ const FormUserDetails = ({ values, handleChange, nextStep }) => {
   );
 };
 
-export default FormUserDetails;
+export default FormPersonalDetails;
